@@ -1,6 +1,6 @@
 {
   "name": "@neosyn-ee/web-view-configurator",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Configures WKWebView settings",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",

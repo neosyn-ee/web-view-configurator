@@ -13,24 +13,44 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`enableWebRTC()`](#enablewebrtc)
+* [`setJavaScriptEnabled(...)`](#setjavascriptenabled)
+* [`requestCameraAndMicAccess()`](#requestcameraandmicaccess)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### enableWebRTC()
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+enableWebRTC() => Promise<void>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+--------------------
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+### setJavaScriptEnabled(...)
+
+```typescript
+setJavaScriptEnabled(options: { enabled: boolean; }) => Promise<void>
+```
+
+| Param         | Type                               |
+| ------------- | ---------------------------------- |
+| **`options`** | <code>{ enabled: boolean; }</code> |
+
+--------------------
+
+
+### requestCameraAndMicAccess()
+
+```typescript
+requestCameraAndMicAccess() => Promise<{ granted: boolean; }>
+```
+
+**Returns:** <code>Promise&lt;{ granted: boolean; }&gt;</code>
 
 --------------------
 

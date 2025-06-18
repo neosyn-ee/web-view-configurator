@@ -1,6 +1,9 @@
 package com.neosyn.plugins.webviewconfigurator;
 
-import com.getcapacitor.JSObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.webkit.WebView;
+
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
@@ -9,14 +12,27 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "WebViewConfigurator")
 public class WebViewConfiguratorPlugin extends Plugin {
 
-    private WebViewConfigurator implementation = new WebViewConfigurator();
+    @PluginMethod
+    public void setJavaScriptEnabled(final PluginCall call) {
+        boolean enabled = call.getBoolean("enabled", true);
+
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(() -> {
+            WebView webView = (WebView) getBridge().getWebView();
+            webView.getSettings().setJavaScriptEnabled(enabled);
+            call.resolve();
+        });
+    }
 
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
+    public void setMediaPlaybackRequiresUserGesture(final PluginCall call) {
+        boolean enabled = call.getBoolean("enabled", false);
 
-        JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
-        call.resolve(ret);
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(() -> {
+            WebView webView = (WebView) getBridge().getWebView();
+            webView.getSettings().setMediaPlaybackRequiresUserGesture(enabled);
+            call.resolve();
+        });
     }
 }

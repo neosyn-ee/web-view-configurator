@@ -1,3 +1,5 @@
 export interface WebViewConfiguratorPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  enableWebRTC(): Promise<void>;
+  setJavaScriptEnabled(options: { enabled: boolean }): Promise<void>;
+  requestCameraAndMicAccess(): Promise<{ granted: boolean }>;
 }
